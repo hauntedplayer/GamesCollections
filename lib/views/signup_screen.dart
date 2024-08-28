@@ -13,15 +13,16 @@ class SignupScreen extends ConsumerStatefulWidget {
 }
 
 class _SignupScreenState extends ConsumerState<SignupScreen> {
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   void _signup() {
-    final username = _usernameController.text;
+    final email = _emailController.text;
     final password = _passwordController.text;
     
-    final newUser = User(
-      username: username,
+    final newUser = UserModel(
+      name: "",
+      email: email,
       password: password,
     );
   
@@ -55,7 +56,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         child: Column(
           children: [
             TextField(
-              controller: _usernameController,
+              controller: _emailController,
               decoration: const InputDecoration(labelText: 'Username'),
             ),
             TextField(
@@ -76,7 +77,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }

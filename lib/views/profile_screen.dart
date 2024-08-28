@@ -19,7 +19,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     return Scaffold(
         appBar: AppBar(title: const Text('Profile')),
         body: user != null
-            ? Center(child: Text('Logged in as ${user.username}'))
+            ? Center(child: Text('Logged in as ${user.user?.email}'))
             : const Center(child: Text('No user logged in')),
         bottomNavigationBar: BottomNavigationBar(
             items: const [

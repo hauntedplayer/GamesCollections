@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:games_colletions/models/user_model.dart';
 import 'package:games_colletions/views/signup_screen.dart';
 
 import '../controllers/user_controller.dart';
@@ -13,15 +14,15 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   void _login() {
-    final username = _usernameController.text;
+    final email = _emailController.text;
     final password = _passwordController.text;
     ref
         .read(userControllerProvider.notifier)
-        .loginUser(username, password)
+        .loginUser(UserModel(name: "", email: email, password: password))
         .then((user) {
       if (user != null) {
         Navigator.pushReplacement(
@@ -48,7 +49,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: _usernameController,
+              controller: _emailController,
               decoration: const InputDecoration(labelText: 'Username'),
             ),
             TextField(

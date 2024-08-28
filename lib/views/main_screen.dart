@@ -58,9 +58,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             onTap: (index) {
               switch (index) {
                 
-                case 1:
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Favorite_screen()));
+                // case 1:
+                //   Navigator.pushReplacement(context,
+                //       MaterialPageRoute(builder: (context) => Favorite_screen()));
                 case 2:
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => ProfileScreen()));

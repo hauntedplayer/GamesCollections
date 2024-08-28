@@ -1,14 +1,16 @@
-class User {
+class UserModel {
   final int? id;
-  final String username;
+  final String name;
+  final String email;
   final String password;
 
-  const User({this.id, required this.username, required this.password});
+  const UserModel({this.id, required this.name, required this.email, required this.password});
 
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
       id: map['id'],
-      username: map['username'],
+      name: map['name'],
+      email: map['email'],
       password: map['password'],
     );
   }
@@ -16,7 +18,8 @@ class User {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'username': username,
+      'name': name,
+      'email': email,
       'password': password,
     };
   }
