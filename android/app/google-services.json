@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "501410510498",
+    "firebase_url": "https://gamescollections-e9a7c-default-rtdb.firebaseio.com",
+    "project_id": "gamescollections-e9a7c",
+    "storage_bucket": "gamescollections-e9a7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501410510498:android:df64b1cdf5e31ade2bc9fb",
+        "android_client_info": {
+          "package_name": "com.example.games_colletions"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk7bLMmoK3_zy-14ELuGvbZjQGOHEmMxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501410510498:android:bc5a22eaf39f5df82bc9fb",
+        "android_client_info": {
+          "package_name": "com.exemple.games_colletions"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk7bLMmoK3_zy-14ELuGvbZjQGOHEmMxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
