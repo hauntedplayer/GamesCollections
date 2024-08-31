@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:games_colletions/views/login_screen.dart';
 import 'package:games_colletions/views/main_screen.dart';
 
 import '../controllers/user_controller.dart';
@@ -12,14 +13,31 @@ class ProfileScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  void logout() {
+    ref.read(userControllerProvider.notifier).logoutUser;
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userControllerProvider);
-
     return Scaffold(
-        appBar: AppBar(title: const Text('Profile')),
+        appBar: AppBar(title: const Text('Perfil')),
         body: user != null
-            ? Center(child: Text('Logged in as ${user.user?.email}'))
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Logged in as ${user.user?.email}'),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: logout,
+                      child: const Text('Logout'),
+                    ),
+                  ],
+                ),
+              )
             : const Center(child: Text('No user logged in')),
         bottomNavigationBar: BottomNavigationBar(
             items: const [

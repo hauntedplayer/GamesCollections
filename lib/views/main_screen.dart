@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:games_colletions/views/favorite_screen.dart';
 import 'package:games_colletions/views/profile_screen.dart';
 
 import '../controllers/game_controller.dart';
@@ -21,7 +20,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     return Scaffold(
         appBar: AppBar(
           title: TextField(
-            decoration: const InputDecoration(hintText: 'Search games'),
+            decoration: const InputDecoration(hintText: 'Pesquisar'),
             onChanged: (value) {
               setState(() {
                 _searchQuery = value;
@@ -53,17 +52,18 @@ class _MainScreenState extends ConsumerState<MainScreen> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.star_rounded), label: 'favoritos'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Profile'),
+                  icon: Icon(Icons.person), label: 'Perfil'),
             ],
             onTap: (index) {
               switch (index) {
-                
                 // case 1:
                 //   Navigator.pushReplacement(context,
                 //       MaterialPageRoute(builder: (context) => Favorite_screen()));
                 case 2:
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
               }
             }));
   }
