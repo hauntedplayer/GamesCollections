@@ -5,80 +5,77 @@ import 'package:games_colletions/views/main_screen.dart';
 import '../controllers/user_controller.dart';
 import '../models/user_model.dart';
 
-class SignupScreen extends ConsumerStatefulWidget {
+class SignupScreen extends ConsumerWidget {
   const SignupScreen({super.key});
 
   @override
-  _SignupScreenState createState() => _SignupScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final nameController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
 
-class _SignupScreenState extends ConsumerState<SignupScreen> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+    void signup() {
+      final name = nameController.text;
+      final email = emailController.text;
+      final password = passwordController.text;
 
-  void _signup() {
-    final email = _emailController.text;
-    final password = _passwordController.text;
-    
-    final newUser = UserModel(
-      name: "",
-      email: email,
-      password: password,
-    );
-  
-
-    ref.read(userControllerProvider.notifier).registerUser(newUser).then((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User registered successfully!')),
+      final newUser = UserModel(
+        name: name,
+        email: email,
+        password: password,
       );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
-      );
-    }).catchError((error) {
-      print("aqui");
-      print(error.message);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Failed to register user. Please try again.')),
-      );
-    });
-  }
 
-  @override
-  Widget build(BuildContext context) {
+      ref.read(userControllerProvider.notifier).registerUser(newUser).then((_) {
+        
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Usuario registrado com sucesso!')),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MainScreen()),
+        );
+      }).catchError((error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Falha ao registrar usuario, Tente novamente!'),
+          ),
+        );
+      });
+    }
+
+    final isLoading = ref.watch(loadingProvider);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('Cadastar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(labelText: 'Username'),
+              controller: nameController,
+              decoration: const InputDecoration(labelText: 'Nome'),
             ),
             TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
+              controller: emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+            ),
+            TextField(
+              controller: passwordController,
+              decoration: const InputDecoration(labelText: 'Senha'),
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _signup,
-              child: const Text('Sign Up'),
-            ),
+            isLoading
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: signup,
+                    child: const Text('Cadastrar'),
+                  ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
   }
 }

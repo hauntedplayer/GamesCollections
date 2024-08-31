@@ -23,11 +23,20 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -41,52 +50,21 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCZQGx0t6NbpSoTnQ9aIOGJM3x8IYMRRvY',
-    appId: '1:501410510498:web:8b4576c65ad522102bc9fb',
-    messagingSenderId: '501410510498',
-    projectId: 'gamescollections-e9a7c',
-    authDomain: 'gamescollections-e9a7c.firebaseapp.com',
-    databaseURL: 'https://gamescollections-e9a7c-default-rtdb.firebaseio.com',
-    storageBucket: 'gamescollections-e9a7c.appspot.com',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC9FDzp5N78Wke4HskK1vWR44LdtMe_yX0',
-    appId: '1:501410510498:ios:c17fe55bd17f3cbd2bc9fb',
-    messagingSenderId: '501410510498',
-    projectId: 'gamescollections-e9a7c',
-    databaseURL: 'https://gamescollections-e9a7c-default-rtdb.firebaseio.com',
-    storageBucket: 'gamescollections-e9a7c.appspot.com',
-    iosBundleId: 'com.example.gamesColletions',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC9FDzp5N78Wke4HskK1vWR44LdtMe_yX0',
-    appId: '1:501410510498:ios:c17fe55bd17f3cbd2bc9fb',
-    messagingSenderId: '501410510498',
-    projectId: 'gamescollections-e9a7c',
-    databaseURL: 'https://gamescollections-e9a7c-default-rtdb.firebaseio.com',
-    storageBucket: 'gamescollections-e9a7c.appspot.com',
-    iosBundleId: 'com.example.gamesColletions',
+    apiKey: 'AIzaSyArJuxR0oBgRZYF_92wZ4mIRyvL586qpxY',
+    appId: '1:592485418564:web:daf66c252369e6ae805e11',
+    messagingSenderId: '592485418564',
+    projectId: 'gamescollections-a1b1a',
+    authDomain: 'gamescollections-a1b1a.firebaseapp.com',
+    storageBucket: 'gamescollections-a1b1a.appspot.com',
+    measurementId: 'G-DGSZZD12L2',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDk7bLMmoK3_zy-14ELuGvbZjQGOHEmMxY',
-    appId: '1:501410510498:android:bc5a22eaf39f5df82bc9fb',
-    messagingSenderId: '501410510498',
-    projectId: 'gamescollections-e9a7c',
-    databaseURL: 'https://gamescollections-e9a7c-default-rtdb.firebaseio.com',
-    storageBucket: 'gamescollections-e9a7c.appspot.com',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCZQGx0t6NbpSoTnQ9aIOGJM3x8IYMRRvY',
-    appId: '1:501410510498:web:fe84a8c74ae772462bc9fb',
-    messagingSenderId: '501410510498',
-    projectId: 'gamescollections-e9a7c',
-    authDomain: 'gamescollections-e9a7c.firebaseapp.com',
-    databaseURL: 'https://gamescollections-e9a7c-default-rtdb.firebaseio.com',
-    storageBucket: 'gamescollections-e9a7c.appspot.com',
+    apiKey: 'AIzaSyARXTW2-Elq19hfDZap5_W3u3EAoWbGTkw',
+    appId: '1:592485418564:android:17d1deac6c046357805e11',
+    messagingSenderId: '592485418564',
+    projectId: 'gamescollections-a1b1a',
+    storageBucket: 'gamescollections-a1b1a.appspot.com',
   );
 
 }

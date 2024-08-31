@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 import '../database_helper.dart';
 import '../models/user_model.dart';
@@ -11,19 +8,6 @@ class UserRepository {
 
   UserRepository(this._databaseHelper);
 
-  // Future<User?> loginUser(String username, String password) async {
-  //   FirebaseHelper db = await _databaseHelper;
-  //   List<Map<String, dynamic>> result = await db.query(
-  //     'users',
-  //     where: 'username = ? AND password = ?',
-  //     whereArgs: [username, password],
-  //   );
-  //   if (result.isNotEmpty) {
-  //     return UserModel.fromMap(result.first);
-  //   }
-  //   return null;
-  // }
-
   Future<UserCredential?> registerUser(UserModel user) async {
     try {
       final credential =
@@ -31,6 +15,7 @@ class UserRepository {
         email: user.email,
         password: user.password,
       );
+      await credential.user?.updateDisplayName(user.name);
       return credential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -44,20 +29,18 @@ class UserRepository {
     return null;
   }
 
-  Future<UserCredential?> loginUser(UserModel user) async{
-      try {
-    final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: user.email,
-      password: user.password
-    );
-    return credential;
-      } on FirebaseAuthException catch (e) {
-    if (e.code == 'user-not-found') {
-      print('No user found for that email.');
-    } else if (e.code == 'wrong-password') {
-      print('Wrong password provided for that user.');
+  Future<UserCredential?> loginUser(UserModel user) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: user.email, password: user.password);
+      return credential;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
     }
-  }
-  return null;
+    return null;
   }
 }
